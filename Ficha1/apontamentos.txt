@@ -1,0 +1,49 @@
+
+
+public class TurmasFacade .... 
+{
+	private Map<String,Aluno> alunos;
+	private TurmaDAO turmas; // TurmaDAO é uma classe que faz interface com a DB
+}
+
+
+// Classe exemplo
+public TurmaDAO 
+{
+	void guardaAluno(String num, String nome, ...); // -> SQL: INSERT INTO ... VALUES ....
+	Aluno getAluno (String num);
+	int qtsAlunos();                                // -> SQL: SELECT COUNT(*) FROM ...
+	boolean existeAluno (String num);
+	Collection<Aluno> alunosComNome (String nome);
+	void clear();
+	boolean estaVazia();
+
+}
+
+o de cima iria dar demasiado trabalho a mudar tudo, logo faz-se o seguinte
+
+public class TurmasFacade .... 
+{
+	private Map<String,Aluno> alunos;
+	private Map<String,ALuno> turmas; 
+}
+
+public TurmaDAO implements Map<String, Turma> 
+{
+	put
+	get
+	containsKey
+	size
+	....
+}
+
+
+-------------------------------------------------------------------------------------------------------
+
+		Padrão singleton - objeto so tem uma instancia
+
+
+	Construtor privado (so pode ser chamado pelo proprio)
+	Metodo de classe que chama o construtor e sabe quantos forem criados (tem variavel de classe que sabe se ja foi criado ou nao)
+
+
